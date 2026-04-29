@@ -49,13 +49,11 @@ If you are working in Google Colab:
 
 | Role | Name | GitHub Username |
 |---|---|---|
-| Project Lead | _Name_ | `github-handle` |
-| Data Lead | _Name_ | `github-handle` |
-| ETL Lead | _Name_ | `github-handle` |
-| Analysis Lead | _Name_ | `github-handle` |
-| Visualization Lead | _Name_ | `github-handle` |
-| Strategy Lead | _Name_ | `github-handle` |
-| PPT and Quality Lead | _Name_ | `github-handle` |
+| Project Lead / ETL Lead | Milind Bansal | `MilindDevX` |
+| Analysis & Visualisation Lead | Vishuti Singh Jamwal | `vishutijamwal07` |
+| Research & Report Lead | Samay Samrat | `samay-hash` |
+| Final Load & Dashboard Lead | Praveen Nitharwal | `Prav1104` |
+| PPT and Quality Lead | Om Yadav | `yadavom7345` |
 
 ---
 
