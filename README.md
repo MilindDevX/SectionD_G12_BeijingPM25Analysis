@@ -228,14 +228,14 @@ The project follows a structured 7-step workflow:
 
 ## Contribution Matrix
 
-| Name        | Data Sourcing | ETL & Cleaning | EDA & Analysis | Statistical Analysis | Tableau Dashboard | Report Writing | PPT & Viva |
-|-------------|---------------|----------------|----------------|----------------------|-------------------|----------------|------------|
-| Milind B.   | Owner         | Owner          | Support        | —                    | Support           | Support        | —          |
-| Hrishabh    | —             | —              | Support        | Support              | Owner             | —              | —          |
-| Om          | —             | Support        | —              | —                    | —                 | Owner          | Owner      |
-| Vishuti J.  | —             | —              | Owner          | Owner                | —                 | Support        | —          |
-| Samay S     | —             | —              | —              | Support              | —                 | Owner          | Support    |
-| Praveen N.  | Support       | —              | Support        | Support              | Owner             | —              | —          |
+| Name                  | Data Sourcing | ETL & Cleaning | EDA & Analysis | Statistical Analysis | Tableau Dashboard | Report Writing | PPT & Viva |
+|-----------------------|---------------|----------------|----------------|----------------------|-------------------|----------------|------------|
+| Milind Bansal         | Owner         | Owner          | Support        | —                    | Support           | Support        | —          |
+| Hrishabh              | —             | —              | Support        | Support              | Owner             | —              | —          |
+| Om                    | —             | Support        | —              | —                    | —                 | Owner          | Owner      |
+| Vishuti Jamwal        | —             | —              | Owner          | Owner                | —                 | Support        | —          |
+| Samay Samrat          | —             | —              | —              | Support              | —                 | Owner          | Support    |
+| Praveen Nitharwal     | Support       | —              | Support        | Support              | Owner             | —              | —          |
 
 _Declaration: We confirm that the above contribution details are accurate and verifiable through GitHub Insights, PR history, and submitted artifacts._
 
