@@ -5,16 +5,6 @@
 > **Submission Date:** April 29, 2026 | **Faculty Mentor:** Archit Raj
 
 ---
-
-## Before You Start
-
-1. Rename the repository using the format `SectionName_TeamID_ProjectName`.
-2. Fill in the project details and team table below.
-3. Add the raw dataset to `data/raw/`.
-4. Complete the notebooks in order from `01` to `05`.
-5. Publish the final dashboard and add the public link in `tableau/dashboard_links.md`.
-6. Export the final report and presentation as PDFs into `reports/`.
-
 ### Quick Start
 
 If you are working locally:
