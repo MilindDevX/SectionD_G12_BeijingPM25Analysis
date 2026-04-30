@@ -1,19 +1,10 @@
-# NST DVA Capstone 2 - Project Repository
+# SectionD_G12_BeijingPM25Analysis
 
 > **Newton School of Technology | Data Visualization & Analytics**
 > A 2-week industry simulation capstone using Python, GitHub, and Tableau to convert raw data into actionable business intelligence.
+> **Submission Date:** April 29, 2026 | **Faculty Mentor:** Archit Raj
 
 ---
-
-## Before You Start
-
-1. Rename the repository using the format `SectionName_TeamID_ProjectName`.
-2. Fill in the project details and team table below.
-3. Add the raw dataset to `data/raw/`.
-4. Complete the notebooks in order from `01` to `05`.
-5. Publish the final dashboard and add the public link in `tableau/dashboard_links.md`.
-6. Export the final report and presentation as PDFs into `reports/`.
-
 ### Quick Start
 
 If you are working locally:
@@ -37,39 +28,40 @@ If you are working in Google Colab:
 
 | Field | Details |
 |---|---|
-| **Project Title** | _To be filled by team_ |
-| **Sector** | _e.g. Retail, Finance, Healthcare, EdTech_ |
-| **Team ID** | _e.g. DVA-B1-T3_ |
-| **Section** | _To be filled by team_ |
-| **Faculty Mentor** | _To be filled by team_ |
+| **Project Title** | SectionD_G12_BeijingPM25Analysis |
+| **Sector** | Environmental Analytics / Public Health |
+| **Team ID** | DVA - D - G12 |
+| **Section** | Section D |
+| **Faculty Mentor** | Archit Raj |
 | **Institute** | Newton School of Technology |
-| **Submission Date** | _To be filled by team_ |
+| **Submission Date** | April 29, 2026 |
 
 ### Team Members
 
 | Role | Name | GitHub Username |
 |---|---|---|
-| Project Lead | _Name_ | `github-handle` |
-| Data Lead | _Name_ | `github-handle` |
-| ETL Lead | _Name_ | `github-handle` |
-| Analysis Lead | _Name_ | `github-handle` |
-| Visualization Lead | _Name_ | `github-handle` |
-| Strategy Lead | _Name_ | `github-handle` |
-| PPT and Quality Lead | _Name_ | `github-handle` |
+| Project Lead | Milind Bansal | MilindDevX |
+| Data Lead | Milind Bansal | MilindDevX |
+| ETL Lead | Milind Bansal | MilindDevX |
+| Analysis Lead | Vishuti Jamwal | vishuti-jamwal |
+| Visualization Lead | Hrishabh Prajapati | hrishu802 |
+| Strategy Lead | Praveen Nitharwal | prav1104 |
+| PPT and Quality Lead | Om Yadav | yadavom7345 |
+| Report Lead | Samay Samrat | samay-hash |
 
 ---
 
 ## Business Problem
 
-_Describe the sector context, the decision-maker this project serves, and the core business challenge being addressed. Keep this to 3-5 sentences written in plain language, as if addressing a senior stakeholder._
+Fine particulate matter (PM2.5) represents the single greatest environmental health risk in urban China. During 2010–2014, Beijing's air quality remained chronically hazardous without a structured, data-backed decision framework for pollution alerts. Beijing's PM2.5 frequently exceeded the "Very Unhealthy" threshold (250 µg/m³), contributing significantly to cardiovascular and respiratory mortality in China. Without a data-backed alert framework, responses remain reactive and ineffective. This capstone develops a predictive analytics platform to translate meteorological and temporal patterns into operational public health guidance.
 
 **Core Business Question**
 
-> _State the single main question your Tableau dashboard and Python analysis will answer._
+> Which meteorological conditions and temporal patterns best predict hazardous PM2.5 levels in Beijing, and how can these be operationalised into a decision-support framework?
 
 **Decision Supported**
 
-> _What action or decision will this analysis enable the stakeholder to take?_
+> Trigger threshold-based public health alerts and advisories based on predicted high-risk PM2.5 conditions.
 
 ---
 
@@ -77,21 +69,23 @@ _Describe the sector context, the decision-maker this project serves, and the co
 
 | Attribute | Details |
 |---|---|
-| **Source Name** | _e.g. World Bank, data.gov.in, Kaggle (raw only)_ |
-| **Direct Access Link** | _Paste the direct download or access URL_ |
-| **Row Count** | _Must be greater than 5,000_ |
-| **Column Count** | _Must be greater than 8 meaningful columns_ |
-| **Time Period Covered** | _e.g. Jan 2019 to Dec 2023_ |
-| **Format** | _e.g. CSV, JSON, Excel_ |
+| **Source Name** | UCI Machine Learning Repository (Liang et al., 2015) |
+| **Direct Access Link** | https://archive.ics.uci.edu/ml/datasets/Beijing+PM2.5+Data |
+| **Row Count** | 43,824 |
+| **Column Count** | 13 |
+| **Time Period Covered** | 1 Jan 2010 – 31 Dec 2014 |
+| **Format** | CSV |
 
 **Key Columns Used**
 
 | Column Name | Description | Role in Analysis |
 |---|---|---|
-| _column_1_ | _What it means_ | _Used for KPI / filter / segmentation_ |
-| _column_2_ | _What it means_ | _Used for KPI / filter / segmentation_ |
-| _column_3_ | _What it means_ | _Used for KPI / filter / segmentation_ |
-| _column_4_ | _What it means_ | _Used for KPI / filter / segmentation_ |
+| pm2.5 | PM2.5 concentration (µg/m³) | Target variable / KPI |
+| DEWP | Dew point (°C) | Predictor / segmentation |
+| TEMP | Temperature (°C) | Predictor / segmentation |
+| cbwd | Combined wind direction (NW, NE, SE, cv) | Segmentation / filters |
+| Iws | Cumulated wind speed (m/s) | Predictor / KPI |
+| Ir / Is | Cumulated rain/snow hours | Precipitation flag / segmentation |
 
 For full column definitions, see [`docs/data_dictionary.md`](docs/data_dictionary.md).
 
@@ -101,9 +95,10 @@ For full column definitions, see [`docs/data_dictionary.md`](docs/data_dictionar
 
 | KPI | Definition | Formula / Computation |
 |---|---|---|
-| _e.g. Monthly Revenue Growth %_ | _What business outcome this tracks_ | _Show the exact formula or notebook reference_ |
-| _e.g. Customer Churn Rate_ | _What business outcome this tracks_ | _Show the exact formula or notebook reference_ |
-| _e.g. Repeat Purchase Rate_ | _What business outcome this tracks_ | _Show the exact formula or notebook reference_ |
+| Annual Mean PM2.5 | Average PM2.5 concentration across all hours in a year; primary compliance metric | Mean of all pm2.5 values in the target year |
+| Hazardous Rate | Proportion of days with average PM2.5 exceeding 150 µg/m³ (moderate hazard threshold) | Count(days with avg PM2.5 > 150) / 365 |
+| WHO Ratio | Annual mean PM2.5 relative to WHO guideline of 15 µg/m³; indicates breach magnitude | Annual Mean PM2.5 / 15 |
+| AQI Distribution | Hourly distribution across AQI categories (Good, Moderate, Unhealthy, Very Unhealthy) | Count(hours in category) / total hours × 100% |
 
 Document KPI logic clearly in `notebooks/04_statistical_analysis.ipynb` and `notebooks/05_final_load_prep.ipynb`.
 
@@ -113,27 +108,40 @@ Document KPI logic clearly in `notebooks/04_statistical_analysis.ipynb` and `not
 
 | Item | Details |
 |---|---|
-| **Dashboard URL** | _Paste Tableau Public link here_ |
-| **Executive View** | _Describe the high-level KPI summary view_ |
-| **Operational View** | _Describe the detailed drill-down view_ |
-| **Main Filters** | _List the interactive filters used_ |
+| **Dashboard URL** | https://public.tableau.com/app/profile/milind.bansal5979/viz/DVA2-Capstone/RiskSeverityOverview?publish=yes |
+| **Executive View** | High-level KPI summary: Annual Mean PM2.5, WHO breach ratio (6–7×), hazardous days indicator, and AQI distribution overview |
+| **Operational View** | Hour-vs-month heatmap showing temporal PM2.5 patterns, wind direction analysis by pollution level, seasonal breakdowns by KPI |
+| **Main Filters** | Year, month, hour, AQI category, season, wind direction (cbwd) |
 
-Store dashboard screenshots in [`tableau/screenshots/`](tableau/screenshots/) and document the public links in [`tableau/dashboard_links.md`](tableau/dashboard_links.md).
+Store dashboard screenshots in [`tableau/screenshots/`](tableau/screenshots/) and document the public links in [`tableau/README.md`](tableau/README.md).
 
 ---
 
 ## Key Insights
 
-_List 8-12 major findings from the analysis, written in decision language. Each insight should tell the reader what to think or act upon, not merely describe a chart._
+1. **WHO Guideline Breach Severity**: Beijing's annual mean PM2.5 exceeds the WHO guideline of 15 µg/m³ by 6–7 fold, indicating severe and chronic exposure across the population.
 
-1. _Insight 1_
-2. _Insight 2_
-3. _Insight 3_
-4. _Insight 4_
-5. _Insight 5_
-6. _Insight 6_
-7. _Insight 7_
-8. _Insight 8_
+2. **No Improvement Trend (2010–2014)**: Despite regulatory efforts, air quality showed no statistically significant improvement over the 5-year study period, suggesting the need for more aggressive interventions.
+
+3. **Hazardous Hours Prevalence**: Approximately 21% of all hours (roughly 1 in 5 days) recorded average PM2.5 concentrations in the hazardous range (>150 µg/m³).
+
+4. **Winter Peak Pollution**: December through February exhibit 2–3× higher pollution levels compared to summer, driven by increased heating demand and stagnant meteorological conditions.
+
+5. **Diurnal (Daily) Pattern**: Late-night and early-morning hours (8 PM–8 AM) show consistent PM2.5 spikes due to boundary layer collapse and reduced vertical mixing.
+
+6. **Calm Wind Acceleration**: Calm wind conditions (cbwd='cv') show the highest average PM2.5 concentrations; wind speed emerges as the strongest single predictor of pollution levels.
+
+7. **Northwest Wind Mitigation**: Northwest (NW) wind conditions are associated with the lowest PM2.5 concentrations, providing a "clean window" for high-emission activities.
+
+8. **Precipitation Non-Impact**: Neither rainfall nor snowfall show statistically significant causal relationships with PM2.5 reduction; snow is a seasonal proxy rather than a direct driver.
+
+9. **Wind Speed as Primary Predictor**: Cumulated wind speed (Iws) is the single most predictive meteorological variable; a 1 m/s increase correlates with measurable PM2.5 reduction.
+
+10. **Summer Baseline Low**: Summer months (Jun–Aug) consistently show the lowest pollution levels (30–50 µg/m³), enabling seasonal benchmarking and improvement target-setting.
+
+11. **Multi-Hour Lag Effects**: Temperature and dew point show lagged relationships with PM2.5 (4–12 hour delays), indicating atmospheric transport and mixing delays.
+
+12. **AQI Category Skew**: Over 40% of hours fall into the "Unhealthy" or "Very Unhealthy" categories, with evening rush hour exacerbating peaks.
 
 ---
 
@@ -143,16 +151,18 @@ _Provide 3-5 specific, actionable business recommendations, each linked directly
 
 | # | Insight | Recommendation | Expected Impact |
 |---|---|---|---|
-| 1 | _Which insight does this address?_ | _What should the stakeholder do?_ | _What measurable impact do you expect?_ |
-| 2 | _Which insight does this address?_ | _What should the stakeholder do?_ | _What measurable impact do you expect?_ |
-| 3 | _Which insight does this address?_ | _What should the stakeholder do?_ | _What measurable impact do you expect?_ |
+| 1 | Winter Peak Pollution (Insight 4) | Implement winter-priority emission reduction targeting coal heating infrastructure (Dec–Feb). Coordinate with district heating authorities to enforce scrubber upgrades and fuel switching. | 10–15% reduction in peak exposure during winter months; ~500,000 population benefiting from reduced respiratory hospitalizations. |
+| 2 | Northwest Wind Mitigation (Insight 7) | Establish a "Clean Window" alert framework that triggers high-emission construction and industrial activities when NW winds exceed 21 m/s. Pre-position alerts 24–48 hours in advance using wind forecasts. | Improved advisory precision and operational timing; reduced acute pollution episodes during high-wind periods. |
+| 3 | Calm Wind Emergency Protocols (Insight 6) | Deploy emergency industrial emission caps (cbwd='cv' conditions). Establish a "Red Alert" protocol limiting coal-fired power plant output and non-essential manufacturing when calm winds forecast. | Reduction of acute spikes (300+ µg/m³) by 20–30%; faster response to stagnant conditions. |
+| 4 | Diurnal Monitoring Shift (Insight 5) | Migrate from daily AQI averaging to hourly-granular monitoring for health advisories, particularly capturing 8 PM–8 AM spikes. Issue rolling 4-hour pollution forecasts for evening commute planning. | Earlier warning for vulnerable populations; improved daily activity planning for asthmatics and elderly. |
+| 5 | Wind Speed as Operational Lever (Insight 9) | Prioritize wind speed forecasting in the decision-support model. Use ensemble wind forecasts (24–72 hour lead time) to pre-position public health guidance and emission-reduction protocols. | Shift from reactive 6-hour advisories to proactive 48+ hour planning; 30–40% improvement in advisory adherence. |
 
 ---
 
 ## Repository Structure
 
 ```text
-SectionName_TeamID_ProjectName/
+SectionD_G12_BeijingPM25Analysis/
 |
 |-- README.md
 |
@@ -171,18 +181,18 @@ SectionName_TeamID_ProjectName/
 |   `-- etl_pipeline.py
 |
 |-- tableau/
-|   |-- screenshots/
-|   `-- dashboard_links.md
+|   |-- README.md
+|   `-- screenshots/
 |
 |-- reports/
-|   |-- README.md
-|   |-- project_report_template.md
-|   `-- presentation_outline.md
+|   |-- Plots/
+|   |-- report_dva.pdf
+|   `-- ppt_dva.pdf
 |
 |-- docs/
 |   `-- data_dictionary.md
 |
-|-- DVA-oriented-Resume/
+|-- DVA-focused-Resume/
 `-- DVA-focused-Portfolio/
 ```
 
@@ -216,83 +226,22 @@ The project follows a structured 7-step workflow:
 
 ---
 
-## Evaluation Rubric
-
-| Area | Marks | Focus |
-|---|---|---|
-| Problem Framing | 10 | Is the business question clear and well-scoped? |
-| Data Quality and ETL | 15 | Is the cleaning pipeline thorough and documented? |
-| Analysis Depth | 25 | Are statistical methods applied correctly with insight? |
-| Dashboard and Visualization | 20 | Is the Tableau dashboard interactive and decision-relevant? |
-| Business Recommendations | 20 | Are insights actionable and well-reasoned? |
-| Storytelling and Clarity | 10 | Is the presentation professional and coherent? |
-| **Total** | **100** | |
-
-> Marks are awarded for analytical thinking and decision relevance, not chart quantity, visual decoration, or code length.
-
----
-
-## Submission Checklist
-
-**GitHub Repository**
-
-- [ ] Public repository created with the correct naming convention (`SectionName_TeamID_ProjectName`)
-- [ ] All notebooks committed in `.ipynb` format
-- [ ] `data/raw/` contains the original, unedited dataset
-- [ ] `data/processed/` contains the cleaned pipeline output
-- [ ] `tableau/screenshots/` contains dashboard screenshots
-- [ ] `tableau/dashboard_links.md` contains the Tableau Public URL
-- [ ] `docs/data_dictionary.md` is complete
-- [ ] `README.md` explains the project, dataset, and team
-- [ ] All members have visible commits and pull requests
-
-**Tableau Dashboard**
-
-- [ ] Published on Tableau Public and accessible via public URL
-- [ ] At least one interactive filter included
-- [ ] Dashboard directly addresses the business problem
-
-**Project Report**
-
-- [ ] Final report exported as PDF into `reports/`
-- [ ] Cover page, executive summary, sector context, problem statement
-- [ ] Data description, cleaning methodology, KPI framework
-- [ ] EDA with written insights, statistical analysis results
-- [ ] Dashboard screenshots and explanation
-- [ ] 8-12 key insights in decision language
-- [ ] 3-5 actionable recommendations with impact estimates
-- [ ] Contribution matrix matches GitHub history
-
-**Presentation Deck**
-
-- [ ] Final presentation exported as PDF into `reports/`
-- [ ] Title slide through recommendations, impact, limitations, and next steps
-
-**Individual Assets**
-
-- [ ] DVA-oriented resume updated to include this capstone
-- [ ] Portfolio link or project case study added
-
----
-
 ## Contribution Matrix
 
-This table must match evidence in GitHub Insights, PR history, and committed files.
-
-| Team Member | Dataset and Sourcing | ETL and Cleaning | EDA and Analysis | Statistical Analysis | Tableau Dashboard | Report Writing | PPT and Viva |
-|---|---|---|---|---|---|---|---|
-| _Member 1_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 2_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 3_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 4_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 5_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 6_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
+| Name                  | Data Sourcing | ETL & Cleaning | EDA & Analysis | Statistical Analysis | Tableau Dashboard | Report Writing | PPT & Viva |
+|-----------------------|---------------|----------------|----------------|----------------------|-------------------|----------------|------------|
+| Milind Bansal         | Owner         | Owner          | Support        | —                    | Support           | Support        | —          |
+| Hrishabh              | —             | —              | Support        | Support              | Owner             | —              | —          |
+| Om                    | —             | Support        | —              | —                    | —                 | Owner          | Owner      |
+| Vishuti Jamwal        | —             | —              | Owner          | Owner                | —                 | Support        | —          |
+| Samay Samrat          | —             | —              | —              | Support              | —                 | Owner          | Support    |
+| Praveen Nitharwal     | Support       | —              | Support        | Support              | Owner             | —              | —          |
 
 _Declaration: We confirm that the above contribution details are accurate and verifiable through GitHub Insights, PR history, and submitted artifacts._
 
-**Team Lead Name:** _____________________________
+**Team Lead Name:** Milind Bansal
 
-**Date:** _______________
+**Date:** 28/4/2026
 
 ---
 
