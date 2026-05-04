@@ -3,7 +3,7 @@
 | Name | Portfolio Link |
 | --- | --- |
 | Milind Bansal | https://dva-portfolio-dusky.vercel.app/ |
-| Vishuti Jamwal | |
+| Vishuti Jamwal | https://data-analystics-portfolio-nine.vercel.app/|
 | Hrishabh Prajapati | https://dva-portfolio-one-inky.vercel.app/ |
 | Om Yadav | https://dva-portfolio-tau-six.vercel.app/ |
 | Samay Samrat | |
